@@ -16,6 +16,8 @@ public class Solution24 {
                 head.next = handleSwapPairs(third);;
                 second.next = head;
                 return second;
+            }else{
+                return head;
             }
         }
         return null;
