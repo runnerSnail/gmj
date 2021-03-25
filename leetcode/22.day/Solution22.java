@@ -30,10 +30,11 @@ public class Solution22 {
             list.add(stringBuilder.toString());
             return;
         }
-        // choice route
+        // add condition choice route
         if (open < n) {
             stringBuilder.append('(');
             backTrace(n, open + 1, close, list, stringBuilder);
+            // delete condution  current
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         }
         if (close < open) {
