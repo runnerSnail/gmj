@@ -37,11 +37,10 @@ class Solution30 {
         }
         int start = 0;
         int end = words.length * wordLen;
-        while (end < s.length()) {
+        while (end <= s.length()) {
             if (validateSubstring((HashMap) hashMap.clone(), s.substring(start, end), wordLen)) {
                 result.add(start);
             }
-            ;
             start++;
             end++;
         }
@@ -56,7 +55,7 @@ class Solution30 {
             // System.out.println(word);
             if (hashMap.containsKey(word)) {
                 int num = hashMap.get(word);
-                System.out.println(num);
+                // System.out.println(num); 
                 if(num>0) {
                     hashMap.put(word, num - 1);
                     if(num-1==0) hashMap.remove(word);
@@ -95,6 +94,8 @@ class Solution30 {
         String[] words = { "word", "good", "best", "word" };
         // System.out.println(solution30.findSubstring("wordgoodgoodgoodbestword", words).toString());
         String[] words1 = { "foo","bar" };
+        String[] words2 = { "word","good","best","good" };
         // System.out.println(solution30.findSubstring("barfoothefoobarman", words1).toString());
+        System.out.println(solution30.findSubstring("wordgoodgoodgoodbestword", words2).toString());
     }
 }

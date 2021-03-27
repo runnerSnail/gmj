@@ -11,8 +11,8 @@ class Solution31 {
     public int[] nextPermutation(int[] nums) {
         int findPos = 0;
 
-        for (int i = nums.length - 1; i > 1; i--) {
-            if (i - 1 == 0) {
+        for (int i = nums.length - 1; i > 0; i--) {
+            if (i == 0) {
                 break;
             }
             if (nums[i] > nums[i - 1]) {
@@ -35,7 +35,7 @@ class Solution31 {
                 break;
             }
         }
-
+        // System.out.println(findPos);
         for (int i = findPos; i < nums.length - 1; i++) {
             for (int j = findPos; j < nums.length - 1; j++) {
                 int temp = nums[j];
@@ -58,6 +58,8 @@ class Solution31 {
         System.out.println(Arrays.toString(solution31.nextPermutation(num1)));
         int[] num2 = { 1, 2, 7, 4, 3, 1 }; // 131247
         System.out.println(Arrays.toString(solution31.nextPermutation(num2)));
+        int[] num3 = {1,2};
+        System.out.println(Arrays.toString(solution31.nextPermutation(num3)));
         // int[] num2 = { 1, 2, 7, 4, 3, 1 };
         // for (int i = 0; i < num2.length - 1; i++) {
         //     for (int j = 0; j < num2.length-1; j++) {

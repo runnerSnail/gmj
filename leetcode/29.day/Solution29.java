@@ -29,10 +29,13 @@
 class Solution29 {
     public int divide(int dividend, int divisor) {
         boolean negative = (dividend>=0 && divisor<0) || (dividend<=0 && divisor>0);
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
+        }
         dividend = Math.abs(dividend);
         divisor = Math.abs(divisor);
         int result = 0;
-        while(dividend>divisor){
+        while(dividend>=divisor){
             dividend-=divisor;
             result++;
         }
@@ -40,8 +43,11 @@ class Solution29 {
     }
     public static void main(String[] args) {
         Solution29 solution29 = new Solution29();
-        System.out.println(solution29.divide(10, 3));
-        System.out.println(solution29.divide(10, -3));
-        System.out.println(solution29.divide(7, -3));
+        // System.out.println(solution29.divide(10, 3));
+        // System.out.println(solution29.divide(10, -3));
+        // System.out.println(solution29.divide(7, -3));
+        // System.out.println(solution29.divide(1, 1));
+        // System.out.println(solution29.divide(6, 2));
+        System.out.println(solution29.divide(-2147483648, 1));
     }
 }
