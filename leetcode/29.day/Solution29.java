@@ -22,25 +22,44 @@
 // 除数不为 0。
 // 假设我们的环境只能存储 32 位有符号整数，其数值范围是 [−231, 231 − 1]。本题中，如果除法结果溢出，则返回 231 − 1。
 
-
-
-
 // 10 - 3 7 7-3 4 4-3 1
 class Solution29 {
-    public int divide(int dividend, int divisor) {
-        boolean negative = (dividend>=0 && divisor<0) || (dividend<=0 && divisor>0);
+    public int divideSad(int dividend, int divisor) {
+        boolean negative = (dividend >= 0 && divisor < 0) || (dividend <= 0 && divisor > 0);
         if (dividend == Integer.MIN_VALUE && divisor == -1) {
             return Integer.MAX_VALUE;
         }
         dividend = Math.abs(dividend);
         divisor = Math.abs(divisor);
         int result = 0;
-        while(dividend>=divisor){
-            dividend-=divisor;
+        while (dividend >= divisor) {
+            dividend -= divisor;
             result++;
         }
-        return negative?-result:result;
+        return negative ? -result : result;
     }
+
+    public int divide(int dividend, int divisor) {
+
+        if (divisor == 0)
+            return 0;
+        if (dividend == Integer.MIN_VALUE && divisor == -1)
+            return Integer.MAX_VALUE;
+
+        long dividendAbs = Math.abs((long)dividend);
+        long divisorAbs = Math.abs((long)divisor);
+        boolean negative = (dividend ^ divisor) < 0;
+        long result = 0;
+        for (int i = 31; i >=0; i--) {
+            if ((dividendAbs>>i) >= divisorAbs) {
+                result += (long)1 << i;
+                dividendAbs -= ((long)1 << i)*divisorAbs;
+            }
+        }
+
+        return (int)(negative?-result:result);
+    }
+
     public static void main(String[] args) {
         Solution29 solution29 = new Solution29();
         // System.out.println(solution29.divide(10, 3));
