@@ -9,12 +9,13 @@ import java.util.List;
 //   [2,2,3]
 // ]
 public class Solution39 {
-    public HashSet<String> hashSet = new HashSet();
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> list = new ArrayList<>();
         backTrace(candidates, target, 0, list, new ArrayList<Integer>());
         return list;
     }
+    
     public void backTrace(int[] candidates, int target, int start, List<List<Integer>> list,
             ArrayList<Integer> selectedList) {
         // end condition
