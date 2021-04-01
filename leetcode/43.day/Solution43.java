@@ -1,26 +1,46 @@
 public class Solution43 {
     public String multiply(String num1, String num2) {
-        long result = 0;
-        for (int j = num2.length()-1; j >=0; j--) {
-            long add =0;
-            for (int i = num1.length()-1; i >=0; i--) {
-                add+=(Math.pow(10, num1.length()-1-i)*(num1.charAt(i)-'0')*(num2.charAt(j)-'0'))*Math.pow(10, num2.length()-1-j);
+        if (num1.equals("0") || num2.equals("0")) {
+            return "0";
+        }
+        String ans = "0";
+        int m = num1.length(), n = num2.length();
+        for (int i = n - 1; i >= 0; i--) {
+            StringBuffer curr = new StringBuffer();
+            int add = 0;
+            // multiplier
+            for (int j = n - 1; j > i; j--) {
+                curr.append(0);
             }
-            result+=add;
+            int y = num2.charAt(i) - '0';
+            for (int j = m - 1; j >= 0; j--) {
+                int x = num1.charAt(j) - '0';
+                int product = x * y + add;
+                curr.append(product % 10);
+                add = product / 10;
+            }
+            if (add != 0) {
+                curr.append(add);
+            }
+            ans = addStrings(ans, curr.reverse().toString());
         }
-        // System.out.println(result);
-        StringBuffer resultStr = new StringBuffer();
-        if(result==0){
-            resultStr.append(0);
+        return ans;
+    }
+
+    public String addStrings(String num1, String num2) {
+        int i = num1.length() - 1, j = num2.length() - 1, add = 0;
+        StringBuffer ans = new StringBuffer();
+        while (i >= 0 || j >= 0 || add != 0) {
+            int x = i >= 0 ? num1.charAt(i) - '0' : 0;
+            int y = j >= 0 ? num2.charAt(j) - '0' : 0;
+            int result = x + y + add;
+            ans.append(result % 10);
+            add = result / 10;
+            i--;
+            j--;
         }
-        while(result>=10){
-            resultStr.append(result%10);
-            result /=10;
-        }
-        if(result>0){
-            resultStr.append(result);
-        }
-        return resultStr.reverse().toString();
+        ans.reverse();
+        return ans.toString();
     }
     public static void main(String[] args) {
         Solution43 solution43 = new Solution43();
@@ -28,8 +48,7 @@ public class Solution43 {
         // System.out.println(solution43.multiply("0", "6"));
         // System.out.println(solution43.multiply("1000", "12"));
         // System.out.println(solution43.multiply("123456789", "987654321"));
-        System.out.println(solution43.multiply("140", "721"));
-        System.out.println(498828660196L*840477629533L);
+        System.out.println(solution43.multiply("140", "721")); // 100940
     }
     
 }
