@@ -65,6 +65,7 @@ public class Solution68 {
 
     public static void main(String[] args) {
         Solution68 solution68 = new Solution68();
+        System.out.println(-1/2);
         System.out.println(solution68.fullJustify(new String[]{"This", "is", "an", "example", "of", "text", "justiftion.","vv"},16).toString());
     }
 }
