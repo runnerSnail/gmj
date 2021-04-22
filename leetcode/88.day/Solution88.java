@@ -15,11 +15,11 @@ public class Solution88 {
             } else if (p2 == n) {
                 cur = nums1[p1];
                 p1++;
-            } else if (nums1[p1] <= nums2[p2]) {
+            } else if (nums1[p1] < nums2[p2]) {
                 cur = nums1[p1];
                 p1++;
             } else {
-                cur = nums1[p2];
+                cur = nums2[p2];
                 p2++;
             }
             result[p1 + p2 - 1] = cur;
@@ -28,7 +28,7 @@ public class Solution88 {
         for (int i = 0; i < m + n; i++) {
             nums1[i] = result[i];
         }
-        System.out.println(Arrays.toString(nums1));
+        // System.out.println(Arrays.toString(nums1));
     }
 
     public static void main(String[] args) {
