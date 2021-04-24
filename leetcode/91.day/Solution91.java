@@ -7,7 +7,7 @@ public class Solution91 {
             if (s.charAt(i - 1) != '0') {
                 dp[i] += dp[i - 1];
             }
-            if (i > 1 && s.charAt(i - 2) != '0' && ((s.charAt(i - 2) - '0') * 10 + s.charAt(i) - '0' <= 26)) {
+            if (i > 1 && s.charAt(i - 2) != '0' && ((s.charAt(i - 2) - '0') * 10 + s.charAt(i-1) - '0' <= 26)) {
                 dp[i] += dp[i - 2];
             }
 
@@ -16,6 +16,7 @@ public class Solution91 {
     }
 
     public static void main(String[] args) {
-
+        Solution91 solution91 = new Solution91();
+        System.out.println(solution91.numDecodings("12"));
     }
 }
