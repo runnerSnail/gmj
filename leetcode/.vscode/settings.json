@@ -1,5 +1,9 @@
 {
     "java.project.sourcePaths": [
+        "99.day",
+        "98.day",
+        "97.day",
+        "96.day",
         "95.day",
         "94.day",
         "93.day",
@@ -24,6 +28,6 @@
         "74.day",
         "73.day",
         "72.day",
-        "96.day"
+        "100.day"
     ]
 }
