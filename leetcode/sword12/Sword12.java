@@ -11,10 +11,10 @@ public class Sword12 {
     }
 
     private boolean dfs(char[][] board, int i, int j, int index, String word) {
-        if (i < 0 || i >= board.length || j < 0 || j <= board[0].length || board[i][j] != word.charAt(index)) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] != word.charAt(index)) {
             return false;
         }
-        if (index == word.length())
+        if (index == word.length()-1)
             return true;
         board[i][j] = '\0';
         boolean exist = dfs(board, i + 1, j, index + 1, word) || dfs(board, i - 1, j, index + 1, word)
