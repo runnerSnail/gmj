@@ -14,7 +14,7 @@ class Solution140 {
         List<Deque<String>> breakWords = backTrace(s, 0, s.length(), map, new HashSet<>(wordDict));
 
         for (Deque<String> breakWord : breakWords) {
-            ret.add(String.join("", breakWord));
+            ret.add(String.join(" ", breakWord));
         }
 
         return ret;
@@ -22,19 +22,18 @@ class Solution140 {
 
     private List<Deque<String>> backTrace(String s, int index, int length, Map<Integer, List<Deque<String>>> map,
             HashSet<String> hashSet) {
-        List<Deque<String>> breakWords = new ArrayList<>();
-
-        if (index == length) {
-            breakWords.add(new LinkedList<>());
-        }
 
         if (!map.containsKey(index)) {
-            
-            for (int i = index + 1; i < length; i++) {
-                String word = s.substring(index, i);
+            List<Deque<String>> breakWords = new ArrayList<>();
 
+            if (index == length) {
+                breakWords.add(new LinkedList<>());
+            }
+    
+            for (int i = index + 1; i <= length; i++) {
+                String word = s.substring(index, i);
                 if (hashSet.contains(word)) {
-                    List<Deque<String>> nextBreakWords = backTrace(s, index + 1, length, map, hashSet);
+                    List<Deque<String>> nextBreakWords = backTrace(s, i, length, map, hashSet);
                     for (Deque<String> nextBreakWord : nextBreakWords) {
                         Deque<String> breakWord = new LinkedList<>(nextBreakWord);
                         breakWord.offerFirst(word);
