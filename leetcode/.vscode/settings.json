@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
+        "sword19.java",
         "sword18",
         "sword17",
         "sword16",
@@ -84,6 +85,6 @@
         "102.day",
         "101.day",
         "100.day",
-        "sword19.java"
+        "sword20"
     ]
 }
