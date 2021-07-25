@@ -94,5 +94,6 @@
         "101.day",
         "100.day",
         "sword35"
-    ]
+    ],
+    "go.inferGopath": false
 }
